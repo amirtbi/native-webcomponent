@@ -7,33 +7,52 @@
     <script src="tooltip.js"></script>
     <script src="confirm-link.js"></script>
     <style>
-        div{
-            border: 2px solid red;
-        }
-        /* .highlight-text{
-            background-color: rgb(126, 74, 163);
-            border-bottom: 1px solid yellow;
-        } */
 
-        custom-tooltip{
-            border: 1px solid red;
-            padding: 0.25rem 0.75rem;
-         
+        *{
+            box-sizing: border-box;
         }
 
+        
+        
+        html{
+            padding: 1rem;
+            font-family: sans-serif; 
+            --color-primary:rgb(255, 0, 0);
+            --padding-sm:1rem;
+            --padding-md:1.2rem;
+            --color-info:#1291c4cc;
+        }
+        
+    
+
+        .pos-relative{
+            position: relative;
+            z-index: 1111;
+            margin: 0.5rem;
+        }
+
+        .wrapper{
+            display: flex;
+            flex-direction: row;
+            
+        }
     </style>
 </head>
 <body>
-    <p>
 
-        <custom-tooltip class="important" text="custom tool tip">web component are awesome</custom-tooltip>
-    </p>
-    <h1>
-        
-        <custom-tooltip text="another text"></custom-tooltip>
-    </h1>
-    <custom-tooltip  text="another text"><span class="highlight-text">Custom elmeents</span></custom-tooltip>
+    <div class="wrapper">
 
-    <a is="custom-link" href="https://www.google.com">Google</a>
+        <p class="pos-relative">
+    
+            <custom-tooltip class="important" text="custom tool tip">This is an important wb component</custom-tooltip>
+        </p>
+        <p class="pos-relative">
+
+            <custom-tooltip class="info" text="job position">Vue js developer</custom-tooltip>
+        </p>
+    </div>
+
+    
+    <!-- <a is="custom-link" href="https://www.google.com">Google</a> -->
 </body>
 </html>

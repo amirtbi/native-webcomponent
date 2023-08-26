@@ -11,22 +11,36 @@ class Tooltip extends HTMLElement {
     
     <style>
       div{
+        font-weight:normarl;
         position:absolute;
-        left:10px;
-        background-color:#ccc;
-        padding:0.75rem;
-        width:100px;
+        right:0px;
+        top:50px;
+        background-color:black;
+        padding:0.75rem;    
         width:100px
-        z-index:1111;
-        color:black;
+        z-index:10;
+        color:white;
         border-radius:0.25rem
+        box-shadow:1px 1px 6px rgba(0,0,0,0.26);
+     
       }
+      
       .highlight{
-        background-color:blue
+        background-color:blue;
       }
 
       :host(.important){
-        background-color:blue
+        background-color:var(--color-primary,#ccc);
+        padding:var(--padding-md) !important;
+        margin-bottom:1rem !important;
+
+        
+      }
+
+      :host(.info){
+        background-color:var(--color-info);
+        padding:var(--padding-sm);
+        
       }
       :host{
         background-color:indigo
@@ -56,10 +70,11 @@ class Tooltip extends HTMLElement {
         padding:0.25rem;
         font-size:0.75rem;
         cursor:pointer
+        
       }
     
     </style>
-    <a href='#'><slot>some default text</slot></a>
+    <slot>Default text</slot>
  
 
     `;
@@ -77,7 +92,7 @@ class Tooltip extends HTMLElement {
     spanIcon.classList.add("icon");
     this.shadowRoot.appendChild(spanIcon);
     this.style.position = "relative";
-    this.style.zIndex = "11222111";
+    this.style.zIndex = "112222211";
   }
 
   // Private custom method
