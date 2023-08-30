@@ -12,7 +12,8 @@
 
     
     <custom-modal>
-        <p class="para">With your confirmation, you agreed with payment</p>
+        <h2 class="title" slot="header">Confirm request</h2>
+        <p>With your confirmation, you agreed with payment</p>
     </custom-modal>
     <header>
         <custom-navbar links='[{"title":"home"},{"title":"About"},{"title":"FAq"}]' class="bg-purple">
@@ -47,19 +48,27 @@
     <!-- <a is="custom-link" href="https://www.google.com">Google</a> -->
 
     <script>
-        let open;
-        const btn = document.querySelector("button");
-        const modal = document.querySelector("custom-modal");
-        console.log("btn",btn)
-        btn.addEventListener("click",()=>{
-            if(!modal.isOpen){
+
+
+        // let open;
+         const btn = document.querySelector("button");
+         const modal = document.querySelector("custom-modal");
+
+         modal.addEventListener("confirm",(e)=>{
+            window.location.href = window.location.origin+'/home'
+         })
+        // console.log("btn",btn)
+         btn.addEventListener("click",()=>{
+          
+             if(!modal.isOpen){
 
                 modal.open()
-            }
-      
-            // document.querySelector("custom-modal").setAttribute("opened",'')
-            
-        })
+                }
+                modal.addEventListener("cancel",(event)=>{
+                    console.log("Cancelling....",event.message)
+                })
+            })
+
     </script>
 </body>
 </html>
