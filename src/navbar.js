@@ -38,31 +38,48 @@ class CustomNavbar extends HTMLElement {
     
     
     `;
+
+    const linkSlot = this.shadowRoot.querySelectorAll("slot")[1];
+    linkSlot.addEventListener("slotchange", (e) => {
+      const links = JSON.parse(this.getAttribute("links"));
+      const navEl = linkSlot.assignedElements()[0];
+      const ulElements = document.createElement("ul");
+      ulElements.classList.add("link-container");
+      for (const link of links) {
+        const liEl = document.createElement("li");
+
+        console.log("link", liEl);
+        liEl.textContent = link.title;
+        ulElements.appendChild(liEl);
+      }
+      console.log("navelement", navEl);
+      navEl.appendChild(ulElements);
+    });
   }
 
-  _render() {
-    this.shadowRoot
-      .querySelector('slot[name="link"]')
-      .addEventListener("slotchange", () => {
-        const links = JSON.parse(this.getAttribute("links"));
+  // _render() {
+  //   this.shadowRoot
+  //     .querySelector('slot[name="link"]')
+  //     .addEventListener("slotchange", () => {
+  //       const links = JSON.parse(this.getAttribute("links"));
 
-        const navbarEl = this.shadowRoot
-          .querySelector("slot[name='link']")
-          .assignedElements()[0];
+  //       const navbarEl = this.shadowRoot
+  //         .querySelector("slot[name='link']")
+  //         .assignedElements()[0];
 
-        const ulElement = document.createElement("ul");
-        ulElement.classList.add("link-container");
-        for (const link of links) {
-          const liEl = document.createElement("li");
-          liEl.textContent = link.title;
-          ulElement.appendChild(liEl);
-        }
+  //       const ulElement = document.createElement("ul");
+  //       ulElement.classList.add("link-container");
+  //       for (const link of links) {
+  //         const liEl = document.createElement("li");
+  //         liEl.textContent = link.title;
+  //         ulElement.appendChild(liEl);
+  //       }
 
-        navbarEl.appendChild(ulElement);
-      });
-  }
+  //       navbarEl.appendChild(ulElement);
+  //     });
+  // }
   connectedCallback() {
-    this._render();
+    // this._render();
   }
 }
 
