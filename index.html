@@ -55,9 +55,9 @@
          const modal = document.querySelector("custom-modal");
 
          modal.addEventListener("confirm",(e)=>{
-            window.location.href = window.location.origin+'/home'
+            console.log("confirm",e)
          })
-        // console.log("btn",btn)
+        // console.log(" btn",btn)
          btn.addEventListener("click",()=>{
           
              if(!modal.isOpen){
